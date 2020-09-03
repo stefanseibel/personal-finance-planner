@@ -27,6 +27,19 @@ try{
 }
 app.use('/api', API);
 
+//TODO: move to seperate file
+module.exports.SQL_PROMISE = async function(res, query, vars = [], defaultErrHandling = true){
+    return new Promise((resolve, reject) => {
+        connection.query(query, vars, (err, result) => {
+            if (err) {
+                if (defaultErrHandling) return res.status(500).json({err: err});
+                reject(err);
+            }
+            resolve(result);
+        })
+    });
+}
+
 http.listen(config.server.port, () => {
     console.log(`${ config.server.prefix } Service \“${ config.server.name }\“ is launching...`);
     console.log(`${ config.server.prefix } Server is running on port ${ config.server.port }.`)
