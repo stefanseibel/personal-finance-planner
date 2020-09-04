@@ -16,5 +16,8 @@ module.exports = {
             database: 'personalfinanceplanner',
             socketPath: process.env.IS_MAC ? '/Applications/MAMP/tmp/mysql/mysql.sock' : ''
         }
+    },
+    jwt: {
+        key: "oPdcRMXIzMUgv5ws"
     }
 }
