@@ -7,8 +7,9 @@ const route = async (req, res) => {
     const category = req.body.category;
     const amount = req.body.amount;
     const id = req.body.id;
-
-    await sql.update(res,'budgetitem', ['name','category','amount'],[name,category,amount], 'id', id);
+    const userId = req.userData.id;
+    //TODO error if id doesnt match userid
+    await sql.update(res,'budgetitem', ['name','category','amount'],[name,category,amount], ['id','userId'], [id, userId]);
     res.sendStatus(200);
 }
 
