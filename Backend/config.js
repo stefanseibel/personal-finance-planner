@@ -1,3 +1,5 @@
+const keys = require('./keys');
+
 module.exports = {
 
     server: {
@@ -18,6 +20,9 @@ module.exports = {
         }
     },
     jwt: {
-        key: "oPdcRMXIzMUgv5ws"
+        key: keys.jwt.key
+    },
+    yahoofinanceapi: {
+        key: keys.yahoofinanceapi.key
     }
 }
