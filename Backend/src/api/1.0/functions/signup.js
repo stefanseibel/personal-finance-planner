@@ -17,9 +17,9 @@ const route = async (req, res) => {
             mail: mail,
             id: id
             //isAdmin: 0
-        },config.jwt.key, {
-            expiresIn: "10d"
-        });
+        },config.jwt.key);//, {
+            //expiresIn: "10d"
+        //});
 
         return res.status(201).json({
             token: token
