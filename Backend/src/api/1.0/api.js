@@ -11,5 +11,6 @@ router.put('/budgetItem', auth, (req, res) => require('./functions/updateBudgetI
 router.get('/userAssets', auth, (req, res) => require('./functions/getUserAssets')(req, res));
 router.post('/userAssets', auth, (req, res) => require('./functions/postUserAssets')(req, res));
 router.put('/userAssets', auth, (req, res) => require('./functions/getUserAssets')(req, res));
+router.get('/userAssetData', auth, (req, res) => require('./functions/getUserAssetData')(req, res));
 
 module.exports = router;
