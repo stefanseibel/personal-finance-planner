@@ -3,7 +3,7 @@ const keys = require('./keys');
 module.exports = {
 
     server: {
-        port: process.env.SERVER_PORT || 3000,
+        port: process.env.SERVER_PORT || 3001,
         name: 'Personal Finance Planner-Backend',
         prefix: '[PFP]',
         divider: '--------------------'
