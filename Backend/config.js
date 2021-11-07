@@ -21,8 +21,5 @@ module.exports = {
     },
     jwt: {
         key: keys.jwt.key
-    },
-    yahoofinanceapi: {
-        key: keys.yahoofinanceapi.key
     }
 }
