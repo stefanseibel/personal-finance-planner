@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const config = require('../config');
-
+const cors = require('cors')
 const app = express();
 const http = require('http').createServer(app);
 
@@ -26,11 +26,7 @@ try{
     });
 }
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-  });
+app.use(cors())
 
 app.use('/api', API);
 
