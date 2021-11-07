@@ -10,7 +10,8 @@ router.get('/budgetItem', auth, (req, res) => require('./functions/getUserBudget
 router.put('/budgetItem', auth, (req, res) => require('./functions/updateBudgetItem')(req, res));
 router.get('/userAssets', auth, (req, res) => require('./functions/getUserAssets')(req, res));
 router.post('/userAssets', auth, (req, res) => require('./functions/postUserAssets')(req, res));
-router.put('/userAssets', auth, (req, res) => require('./functions/getUserAssets')(req, res));
-router.get('/userAssetData', auth, (req, res) => require('./functions/getUserAssetData')(req, res));
+router.put('/userAssets', auth, (req, res) => require('./functions/updateUserAssets')(req, res));
+router.delete('/userAssets', auth, (req, res) => require('./functions/deleteUserAssets')(req, res));
+router.get('/autoComplete', auth, (req, res) => require('./functions/getAutoComplete')(req, res));
 
 module.exports = router;
