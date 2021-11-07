@@ -1,14 +1,13 @@
 import { Form, Input, Button } from 'antd';
-import loginRequest from '../requests/loginRequest';
+import signupRequest from '../requests/signupRequest';
 
-const Login = (props) => {
+const Signup = (props) => {
     const onFinish = async (values) => {
       
-        const loginResponse = await loginRequest(values);
-        console.log(loginResponse);
-        props.setMail(loginResponse.mail);
-        props.setJwt(loginResponse.token);
-        props.setName(loginResponse.name);
+        const signupResponse = await signupRequest(values);
+        props.setMail(signupResponse.mail);
+        props.setJwt(signupResponse.token);
+        props.setName(signupResponse.name);
     };
   
     const onFinishFailed = (errorInfo) => {
@@ -31,6 +30,19 @@ const Login = (props) => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
+          
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your name!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
         <Form.Item
           label="Mail"
           name="mail"
@@ -71,4 +83,4 @@ const Login = (props) => {
     );
   };
   
-export default Login;
+export default Signup;

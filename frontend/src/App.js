@@ -10,16 +10,21 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import Signup from './components/Signup';
+import HomeLoggedIn from './components/HomeLoggedIn';
+import HomeLoggedOut from './components/HomeLoggedOut';
 
 function App() {
   //logout = setJwt(null)
   const [jwt, setJwt] = useState(null);
   const [mail, setMail] = useState("");
-  console.log('reload');
+  const [name, setName] = useState("")
+
+    console.log('reload');
   return (
     <Router>
       <div>
-      <Navbar text = 'Navbar, User:' mail={mail}/>
+      <Navbar jwt={jwt} mail={mail}/>
       <>
         {jwt ? 
         //logged in 
@@ -32,12 +37,27 @@ function App() {
         <Route path="/assets">
           <Assets jwt={jwt}/>
         </Route>
+        <Route exact path="/">
+          <HomeLoggedIn name={name}/>
+        </Route>
+        <Route path="/">
+          <Redirect to='/' />
+        </Route>
         </Switch>
         : 
         //not logged in 
         <Switch>
         <Route path="/login">
-          <Login setJwt = {setJwt} setMail = {setMail}/>
+          <Login setJwt = {setJwt} setMail = {setMail} setName = {setName}/>
+        </Route>
+        <Route path="/signup">
+          <Signup setJwt = {setJwt} setMail = {setMail} setName = {setName}/>
+        </Route>
+        <Route exact path="/">
+          <HomeLoggedOut />
+        </Route>
+        <Route path="/">
+          <Redirect to='/' />
         </Route>
         </Switch>}
         
