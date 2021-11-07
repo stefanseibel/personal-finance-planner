@@ -9,7 +9,7 @@ const route = async (req, res) => {
     const password = req.body.password;
 
     if (mail && password) {
-        const pwData = (await query(res, "SELECT id, md5hash, salt FROM user WHERE mail = ?",[mail]))[0];
+        const pwData = (await query(res, "SELECT * FROM user WHERE mail = ?",[mail]))[0];
 
         const hashPW = crypto.createHash('md5').update(pwData.salt + password).digest("hex");
 
@@ -24,7 +24,9 @@ const route = async (req, res) => {
             //});
 
             return res.status(200).json({
-                token: token
+                token: token,
+                name: pwData.name,
+                mail: mail
             });
         }
 

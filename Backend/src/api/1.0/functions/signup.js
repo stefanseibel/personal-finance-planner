@@ -22,7 +22,9 @@ const route = async (req, res) => {
         //});
 
         return res.status(201).json({
-            token: token
+            token: token,
+            mail: mail,
+            name: name
         });
     } else {
         return res.sendStatus(400);
