@@ -14,7 +14,7 @@ module.exports = {
             host: 'localhost',
             port: process.env.MYSQL_PORT || 3306,
             user: process.env.MYSQL_USER || 'root',
-            password: process.env.MYSQL_PASSWORD || '',
+            password: process.env.MYSQL_PASSWORD || keys.database.sql.password,
             database: 'personalfinanceplanner',
             socketPath: process.env.IS_MAC ? '/Applications/MAMP/tmp/mysql/mysql.sock' : ''
         }
