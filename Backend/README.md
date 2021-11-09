@@ -145,3 +145,7 @@ Response:
         }, ...
         (max 7 elements)
     ]
+
+---
+
+Other routes not in/for use (yet)
