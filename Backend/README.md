@@ -15,7 +15,133 @@ keys.js:
         jwt: {
             key: "<jwt key>"
         },
-        yahoofinanceapi: {
-            key: "<yahoofinanceapi key>"
+        database: {
+            sql: {
+                password: "<mysql/mariadb user password>"
+            }
         }
     }
+
+## Routes
+
+(for now) all routes start with /api/1.0/, newer versions will be found under different routes
+
+all routes except /login and /signup require a valid JWT in the 'x-api-key' header
+
+### POST /login
+
+Request:
+
+body:
+
+    {
+        "mail": string,
+        "password": string
+    }
+
+Response:
+
+    {
+        token: string/jwt
+    }
+
+### POST /signup
+
+Request:
+
+body:
+
+    {
+        "mail": string,
+        "password": string,
+        "name" string
+    }
+
+
+Response:
+
+    {
+        token: string/jwt
+    }
+
+### GET /userAssets
+
+Request:
+
+no additional data
+
+Response:
+
+    [
+        {
+            "data": {
+                <data from the database>
+            },
+            "additionalData": {
+                <data from Yahoo Finance>
+            }
+        }, ...
+
+    ]
+
+###  POST /userAssets
+
+Request:
+
+body:
+
+    {
+        "symbol": string,
+        "amount": int
+    }
+
+Response:
+
+Status as text
+
+### PUT /userAssets
+
+Request:
+
+body:
+
+    {
+        "id": int
+        "symbol": string (optional),
+        "amount": int (optional)
+    }
+
+Response:
+
+Status as text
+
+### DELETE /userAssets
+
+Request:
+
+body:
+
+    {
+        "id": int
+    }
+
+Response:
+
+Status as text
+
+### GET /autoComplete
+
+Request:
+
+query:
+
+    /autoComplete?input=string
+
+Response:
+
+    [
+        {
+            <asset data from Yahoo Finance>
+        }, ...
+        (max 7 elements)
+    ]
