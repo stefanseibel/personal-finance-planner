@@ -38,6 +38,7 @@ const Login = (props) => {
             {
               required: true,
               message: 'Please input your mail!',
+              type: 'email'
             },
           ]}
         >

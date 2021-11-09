@@ -50,6 +50,7 @@ const Signup = (props) => {
             {
               required: true,
               message: 'Please input your mail!',
+              type: 'email'
             },
           ]}
         >
