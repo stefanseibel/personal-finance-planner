@@ -1,3 +1,5 @@
 # Database
 
-No actual code here, SQL setup file coming here not later than first release, examples and UML documentation planned
+The personalfinanceplanner.sql has to be loaded into the 'personalfinanceplanner' SQL database.
+
+The stucture of the tables can be seen in the .sql file
